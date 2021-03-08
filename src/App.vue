@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-08 18:15:27
+ * @LastEditTime: 2021-03-08 21:41:44
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -41,8 +41,11 @@
   <div>
     <br />
     <ts-input value="张三" />
-    <ts-input value="李四" disabled/> 
-    <ts-input value="李四" error="123132132132"/> 
+    <ts-input value="李四" disabled />
+    <ts-input value="李四" error="123132132132" />
+    <ts-input @change="handleChange" />
+    <ts-input v-model="msg" @input="handleInput" />
+    <p>{{ msg }}</p>
   </div>
 </template>
 
@@ -58,7 +61,9 @@ export default {
     TsButtonGroup,
     TsInput,
   },
+
   setup() {
+    let msg = ref("");
     const loading = ref(false);
     const loading2 = ref(false);
     function handleClick() {
@@ -68,11 +73,21 @@ export default {
     function handleClick2() {
       loading2.value = !loading2.value;
     }
+    function handleChange() {
+      console.log(msg.value);
+    }
+    function handleInput(e) {
+      console.log(e);
+      // msg.value = msg.value + e
+    }
     return {
       loading,
       handleClick,
       loading2,
       handleClick2,
+      handleChange,
+      msg,
+      handleInput,
     };
   },
 };

@@ -1,16 +1,26 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-08 18:34:38
+ * @LastEditTime: 2021-03-08 21:43:27
  * @FilePath: \my-cli-ui\src\Input.vue
 -->
 <template>
   <div class="wrapper" :class="{ error }">
-    <input :value="value" type="text" class="ts-input" :disabled="disabled" />
+    <input
+      :value="value"
+      type="text"
+      class="ts-input"
+      :disabled="disabled"
+      @change="handleChange"
+      @input="handleInput"
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
     <template v-if="error">
       <ts-icon name="error" class="icon-error" />
-      <span class="error-msg">{{error}}</span>
+      <span class="error-msg">{{ error }}</span>
     </template>
+    {{value}}
   </div>
 </template>
 <script>
@@ -29,6 +39,32 @@ export default {
     error: {
       type: String,
     },
+  },
+  emits: ["change", "input", "blur", "focus","update:value"],
+  // eslint-disable-next-line no-unused-vars
+  setup(props, ctx) {
+    function handleChange(e) {
+      // console.log(e)
+      ctx.emit("change", e.target.value);
+    }
+    function handleInput(e) {
+      // console.log(e)
+      ctx.emit("update:value", e.target.value);
+    }
+    function handleBlur(e) {
+      // console.log(e)
+      ctx.emit("blur", e.target.value);
+    }
+    function handleFocus(e) {
+      // console.log(e)
+      ctx.emit("focus", e.target.value);
+    }
+    return {
+      handleChange,
+      handleInput,
+      handleBlur,
+      handleFocus,
+    };
   },
 };
 </script>
@@ -65,9 +101,9 @@ export default {
   }
   &.error {
     > * {
-     &:not(:last-child) {
-        margin-right: .4em;
-     }
+      &:not(:last-child) {
+        margin-right: 0.4em;
+      }
     }
     > input {
       border-color: @error-red;
