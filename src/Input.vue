@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-09 11:28:01
+ * @LastEditTime: 2021-03-09 11:37:47
  * @FilePath: \my-cli-ui\src\Input.vue
 -->
 <template>
@@ -16,7 +16,7 @@
       <input
         :value="value"
         :placeholder="placeholder"
-        type="text"
+        :type="type || 'text'"
         class="ts-input"
         :disabled="disabled"
         @change="handleChange"
@@ -51,6 +51,7 @@ export default defineComponent({
   },
   props: {
     value: String,
+    type:String,
     disabled: {
       type: Boolean,
       default: false,

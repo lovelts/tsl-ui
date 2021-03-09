@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 11:28:10
+ * @LastEditTime: 2021-03-09 13:26:20
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -42,6 +42,7 @@
     <br />
     <ts-input placeholder="我是placeholder" />
     <ts-input value="李四" disabled />
+    <ts-input type="number" />
     <ts-input value="李四" error="123132132132" />
     <ts-input @change="handleChange" />
     <ts-input v-model:value="msg" />
@@ -49,13 +50,26 @@
     <ts-button @click="changeModel">点击改变</ts-button>
     <ts-input value="李四" error="123132132132" errorPosi="bottom" />
     <ts-input value="李四" error="123132132132" errorPosi="top" />
-    <ts-input value="李四" enterButton :buttonAttr="{
-      buttonText:'点击',
-      buttonIcon:'search',
-      buttonIconPosi:'left',
-      buttonIconLoading:false,
-      buttonType: 'danger',
-    }" />
+    <ts-input
+      value="李四"
+      enterButton
+      :buttonAttr="{
+        buttonText: '点击',
+        buttonIcon: 'search',
+        buttonIconPosi: 'left',
+        buttonIconLoading: false,
+        buttonType: 'danger',
+      }"
+    />
+  </div>
+  <div>
+    <ts-divider>.......</ts-divider>
+    <ts-divider posi="left" dashed>左边</ts-divider>
+    <ts-divider posi="center">中间</ts-divider>
+    <ts-divider posi="right">右边</ts-divider>
+    <div :style="{ width: '300px', height: '100px' }">
+      <ts-divider type="vertical" dashed />
+    </div>
   </div>
 </template>
 
@@ -64,12 +78,14 @@ import { ref } from "vue";
 import TsButton from "./Button.vue";
 import TsButtonGroup from "./ButtonGroup";
 import TsInput from "./Input";
+import TsDivider from "./Divider";
 export default {
   name: "App",
   components: {
     TsButton,
     TsButtonGroup,
     TsInput,
+    TsDivider,
   },
 
   setup() {
@@ -117,11 +133,9 @@ export default {
   box-sizing: border-box;
 }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
   margin-top: 60px;
 }
 :root {
