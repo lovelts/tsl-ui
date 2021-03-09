@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 13:26:20
+ * @LastEditTime: 2021-03-09 22:06:15
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -71,6 +71,14 @@
       <ts-divider type="vertical" dashed />
     </div>
   </div>
+  <div :style="{ width: '600px', height: '400px' ,border:'1px solid black',margin:'60px' }">
+    <ts-menu defaultSelect="4">
+      <ts-menu-item icon="setting" myKey="4">侧边栏一</ts-menu-item>
+      <ts-menu-item icon="dianzan" myKey="5">侧边栏二</ts-menu-item>
+      <ts-menu-item icon="download" myKey="6">侧边栏三</ts-menu-item>
+    </ts-menu>
+    <!-- 1111 -->
+  </div>
 </template>
 
 <script>
@@ -79,6 +87,8 @@ import TsButton from "./Button.vue";
 import TsButtonGroup from "./ButtonGroup";
 import TsInput from "./Input";
 import TsDivider from "./Divider";
+import TsMenu from "./Menu";
+import TsMenuItem from './MenuItem'
 export default {
   name: "App",
   components: {
@@ -86,6 +96,8 @@ export default {
     TsButtonGroup,
     TsInput,
     TsDivider,
+    TsMenu,
+    TsMenuItem
   },
 
   setup() {
