@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 08:56:22
+ * @LastEditTime: 2021-03-09 09:47:38
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -46,7 +46,9 @@
     <ts-input @change="handleChange" />
     <ts-input v-model:value="msg" />
     <p>{{ msg }}</p>
-    <button @click="changeModel">点击改变</button>
+    <ts-button @click="changeModel">点击改变</ts-button>
+    <ts-input value="李四" error="123132132132" errorPosi="bottom"/>
+<ts-input value="李四" error="123132132132" errorPosi="top"/>
   </div>
 </template>
 

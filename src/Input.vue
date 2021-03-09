@@ -1,11 +1,17 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-09 09:16:49
+ * @LastEditTime: 2021-03-09 09:53:28
  * @FilePath: \my-cli-ui\src\Input.vue
 -->
 <template>
-  <div class="wrapper" :class="{ error }">
+  <div
+    class="wrapper"
+    :class="{
+      ['error']: error,
+      [`error-posi-${errorPosi}`]: error && errorPosi,
+    }"
+  >
     <input
       :value="value"
       type="text"
@@ -16,10 +22,10 @@
       @focus="handleFocus"
       @blur="handleBlur"
     />
-    <template v-if="error">
+    <div v-if="error">
       <ts-icon name="error" class="icon-error" />
       <span class="error-msg">{{ error }}</span>
-    </template>
+    </div>
   </div>
 </template>
 <script>
@@ -37,6 +43,10 @@ export default {
     },
     error: {
       type: String,
+    },
+    errorPosi: {
+      type: String,
+      default: "right",
     },
   },
   emits: ["change", "input", "blur", "focus", "update:value"],
@@ -73,10 +83,9 @@ export default {
 @border-hover-color: #666;
 @border-shadow-color: rgba(179, 179, 179, 0.5);
 @error-red: #ff4d4f;
-@font-color:rgba(48, 48, 48, 0.85);
+@font-color: rgba(48, 48, 48, 0.85);
 .wrapper {
   display: inline-flex;
-  align-items: center;
   .ts-input {
     color: @font-color;
     height: @height;
@@ -85,7 +94,7 @@ export default {
     font-size: var(--font-size);
     border-radius: 4px;
     padding: 0 1em;
-    transition: all linear .1s;
+    transition: all linear 0.1s;
     &:hover {
       border-color: @border-hover-color;
     }
@@ -103,27 +112,49 @@ export default {
     }
   }
   &.error {
-    > * {
-      &:not(:last-child) {
-        margin-right: 0.4em;
+    > div {
+      display: inline-flex;
+      align-items: center;
+      > * {
+        margin-left: 0.4em;
+      }
+      > input {
+        border-color: @error-red;
+        &:hover {
+          border-color: rgb(255, 0, 0);
+        }
+        &:focus {
+          border-color: rgb(255, 0, 0);
+          box-shadow: 0 0 0 2px rgb(255, 204, 204);
+        }
+      }
+      .icon-error {
+        fill: @error-red;
+        font-size: 16px;
+      }
+      .error-msg {
+        color: red;
       }
     }
-    > input {
-      border-color: @error-red;
-      &:hover {
-        border-color: rgb(255, 0, 0);
-      }
-      &:focus {
-        border-color: rgb(255, 0, 0);
-        box-shadow: 0 0 0 2px rgb(255, 204, 204);
-      }
+  }
+  &.error-posi-bottom {
+    flex-direction: column;
+    justify-content: center;
+    .error-msg {
+      margin-top: 5px;
     }
     .icon-error {
-      fill: @error-red;
-      font-size: 16px;
+      margin-top: 5px;
     }
+  }
+  &.error-posi-top {
+    flex-direction: column-reverse;
+    justify-content: center;
     .error-msg {
-      color: red;
+      margin-bottom: 5px;
+    }
+    .icon-error {
+      margin-bottom: 5px;
     }
   }
 }
