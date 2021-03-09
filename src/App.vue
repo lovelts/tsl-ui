@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 09:47:38
+ * @LastEditTime: 2021-03-09 11:22:10
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -40,15 +40,22 @@
   </div>
   <div>
     <br />
-    <ts-input value="张三" />
+    <ts-input placeholder="我是placeholder" />
     <ts-input value="李四" disabled />
     <ts-input value="李四" error="123132132132" />
     <ts-input @change="handleChange" />
     <ts-input v-model:value="msg" />
     <p>{{ msg }}</p>
     <ts-button @click="changeModel">点击改变</ts-button>
-    <ts-input value="李四" error="123132132132" errorPosi="bottom"/>
-<ts-input value="李四" error="123132132132" errorPosi="top"/>
+    <ts-input value="李四" error="123132132132" errorPosi="bottom" />
+    <ts-input value="李四" error="123132132132" errorPosi="top" />
+    <ts-input value="李四" enterButton :buttonAttr="{
+      buttonText:'点击',
+      buttonIcon:'setting',
+      buttonIconPosi:'left',
+      buttonIconLoading:false,
+      buttonType: 'danger',
+    }" />
   </div>
 </template>
 
@@ -96,6 +103,19 @@ export default {
 </script>
 
 <style lang="less">
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

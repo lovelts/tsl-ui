@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-06 13:14:04
- * @LastEditTime: 2021-03-08 17:51:26
+ * @LastEditTime: 2021-03-09 11:17:05
  * @FilePath: \my-cli-ui\src\Button.vue
 -->
 <template>
@@ -35,7 +35,7 @@ export default defineComponent({
     },
     type: {
       type: String,
-      default: "default"
+      default: "default",
     },
     iconPosi: {
       type: String,
@@ -48,14 +48,6 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(100deg);
-  }
-}
 .ts-button {
   cursor: pointer;
   display: inline-flex;
@@ -97,11 +89,13 @@ export default defineComponent({
     }
   }
   &.btn-primary {
-    
     background-color: rgb(81, 226, 52);
     border: 1px solid rgb(81, 226, 52);
+    .icon {
+      fill: #fff;
+    }
     color: #fff;
-    transition: all ease .2s;
+    transition: all ease 0.2s;
     &:hover {
       background-color: rgb(125, 221, 105);
     }
@@ -112,12 +106,14 @@ export default defineComponent({
       outline: none;
     }
   }
-    &.btn-danger {
-    
+  &.btn-danger {
     background-color: #ff4d4f;
     border: 1px solid #ff4d4f;
     color: #fff;
-    transition: all ease .2s;
+    .icon {
+      fill: #fff;
+    }
+    transition: all ease 0.2s;
     &:hover {
       background-color: #f56a6d;
     }
@@ -128,6 +124,7 @@ export default defineComponent({
       outline: none;
     }
   }
+
   .loading {
     animation: spin 0.3s infinite linear;
   }

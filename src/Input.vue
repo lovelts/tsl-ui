@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-09 09:53:28
+ * @LastEditTime: 2021-03-09 11:19:33
  * @FilePath: \my-cli-ui\src\Input.vue
 -->
 <template>
@@ -12,16 +12,27 @@
       [`error-posi-${errorPosi}`]: error && errorPosi,
     }"
   >
-    <input
-      :value="value"
-      type="text"
-      class="ts-input"
-      :disabled="disabled"
-      @change="handleChange"
-      @input="updateValue"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    />
+    <div class="enter-btn">
+      <input
+        :value="value"
+        :placeholder="placeholder"
+        type="text"
+        class="ts-input"
+        :disabled="disabled"
+        @change="handleChange"
+        @input="updateValue"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
+      <ts-button
+        :icon="buttonAttr.buttonIcon"
+        :iconPosi="buttonAttr.buttonIconPosi"
+        v-if="enterButton"
+        :loading="buttonAttr.buttonIconLoading || false"
+        :type="buttonAttr.buttonType || 'primary'"
+        >{{ buttonAttr.buttonText }}</ts-button
+      >
+    </div>
     <div v-if="error">
       <ts-icon name="error" class="icon-error" />
       <span class="error-msg">{{ error }}</span>
@@ -30,10 +41,12 @@
 </template>
 <script>
 import TsIcon from "./Icon";
+import TsButton from "./Button";
 export default {
   name: "Input",
   components: {
     TsIcon,
+    TsButton,
   },
   props: {
     value: String,
@@ -47,6 +60,23 @@ export default {
     errorPosi: {
       type: String,
       default: "right",
+    },
+    placeholder: String,
+    enterButton: {
+      type: Boolean,
+      default: false,
+    },
+    buttonAttr: {
+      type: Object,
+      default: () => {
+        return {
+          buttonText: "点击",
+          buttonIcon: "serach",
+          buttonIconPosi: "left",
+          buttonIconLoading: false,
+          buttonType: 'primary',
+        };
+      },
     },
   },
   emits: ["change", "input", "blur", "focus", "update:value"],
@@ -97,11 +127,15 @@ export default {
     transition: all linear 0.1s;
     &:hover {
       border-color: @border-hover-color;
+      position: relative;
+      z-index: 1;
     }
     &:focus {
       border-color: @border-hover-color;
       box-shadow: 0 0 0 2px @border-shadow-color;
       outline: none;
+      position: relative;
+      z-index: 1;
     }
     &[disabled] {
       color: rgba(0, 0, 0, 0.25);
@@ -110,15 +144,32 @@ export default {
       opacity: 1;
       border-color: #c4c4c4;
     }
+    // .enter-btn {
+    // }
+  }
+  .enter-btn {
+    > *:not(:first-child) {
+      margin-left: -1px;
+    }
+    > .ts-input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    > .ts-button {
+      height: @height;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
   &.error {
     > div {
       display: inline-flex;
       align-items: center;
       > * {
-        margin-left: 0.4em;
+        margin-left: 0.3em;
       }
       > input {
+        margin-left: 0;
         border-color: @error-red;
         &:hover {
           border-color: rgb(255, 0, 0);
