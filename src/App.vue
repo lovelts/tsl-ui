@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 11:22:10
+ * @LastEditTime: 2021-03-09 11:28:10
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -51,7 +51,7 @@
     <ts-input value="李四" error="123132132132" errorPosi="top" />
     <ts-input value="李四" enterButton :buttonAttr="{
       buttonText:'点击',
-      buttonIcon:'setting',
+      buttonIcon:'search',
       buttonIconPosi:'left',
       buttonIconLoading:false,
       buttonType: 'danger',

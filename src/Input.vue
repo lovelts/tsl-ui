@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-09 11:19:33
+ * @LastEditTime: 2021-03-09 11:28:01
  * @FilePath: \my-cli-ui\src\Input.vue
 -->
 <template>
@@ -25,7 +25,7 @@
         @blur="handleBlur"
       />
       <ts-button
-        :icon="buttonAttr.buttonIcon"
+        :icon="buttonAttr.buttonIcon || ''"
         :iconPosi="buttonAttr.buttonIconPosi"
         v-if="enterButton"
         :loading="buttonAttr.buttonIconLoading || false"
@@ -42,7 +42,8 @@
 <script>
 import TsIcon from "./Icon";
 import TsButton from "./Button";
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
   name: "Input",
   components: {
     TsIcon,
@@ -71,10 +72,10 @@ export default {
       default: () => {
         return {
           buttonText: "点击",
-          buttonIcon: "serach",
+          buttonIcon: "search",
           buttonIconPosi: "left",
           buttonIconLoading: false,
-          buttonType: 'primary',
+          buttonType: "primary",
         };
       },
     },
@@ -105,7 +106,7 @@ export default {
       updateValue,
     };
   },
-};
+});
 </script>
 <style lang="less" scoped>
 @height: 32px;

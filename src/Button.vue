@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-06 13:14:04
- * @LastEditTime: 2021-03-09 11:17:05
+ * @LastEditTime: 2021-03-09 11:34:22
  * @FilePath: \my-cli-ui\src\Button.vue
 -->
 <template>
@@ -126,7 +126,7 @@ export default defineComponent({
   }
 
   .loading {
-    animation: spin 0.3s infinite linear;
+    animation: spin .8s infinite linear;
   }
 }
 </style>
