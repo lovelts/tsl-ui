@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-08 21:41:44
+ * @LastEditTime: 2021-03-09 08:56:22
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -44,8 +44,9 @@
     <ts-input value="李四" disabled />
     <ts-input value="李四" error="123132132132" />
     <ts-input @change="handleChange" />
-    <ts-input v-model="msg" @input="handleInput" />
+    <ts-input v-model:value="msg" />
     <p>{{ msg }}</p>
+    <button @click="changeModel">点击改变</button>
   </div>
 </template>
 
@@ -76,18 +77,17 @@ export default {
     function handleChange() {
       console.log(msg.value);
     }
-    function handleInput(e) {
-      console.log(e);
-      // msg.value = msg.value + e
+    function changeModel() {
+      msg.value += 1;
     }
     return {
+      changeModel,
       loading,
       handleClick,
       loading2,
       handleClick2,
       handleChange,
       msg,
-      handleInput,
     };
   },
 };
