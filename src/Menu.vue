@@ -1,11 +1,11 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-09 13:40:09
- * @LastEditTime: 2021-03-09 22:15:03
+ * @LastEditTime: 2021-03-10 12:43:43
  * @FilePath: \my-cli-ui\src\Menu.vue
 -->
 <template>
-  <div class="ts-menu">
+  <div class="ts-menu" :style="style">
     <slot></slot>
   </div>
 </template>
@@ -15,6 +15,7 @@ export default defineComponent({
   name: "Menu",
   props: {
     defaultSelect: String,
+    style:Object
   },
   setup(props) {
     const activeKey = ref(props.defaultSelect);
@@ -43,5 +44,6 @@ export default defineComponent({
   border-right-style: solid;
   border-color: #e2e2e2;
   flex-direction: column;
+  transition: all .3s;
 }
 </style>
