@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 12:48:51
- * @LastEditTime: 2021-03-10 15:38:46
+ * @LastEditTime: 2021-03-10 15:47:34
  * @FilePath: \my-cli-ui\src\alert\Alert.vue
 -->
 <template>
@@ -23,9 +23,9 @@
   </transition-group>
 </template>
 <script>
-import { ref } from "vue";
+import { defineComponent, ref } from "vue";
 import TsIcon from "../Icon";
-export default {
+export default defineComponent({
   name: "Alert",
   components: {
     TsIcon,
@@ -51,9 +51,9 @@ export default {
       isShow,
     };
   },
-};
+});
 </script>
-<style lang="less" >
+<style lang="less" scoped>
 .ts-alert {
   min-height: 0;
   position: relative;
@@ -125,7 +125,7 @@ export default {
 }
 .alert-enter-active,
 .alert-leave-active {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 
 .alert-enter-from,

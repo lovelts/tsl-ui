@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 11:01:34
- * @LastEditTime: 2021-03-10 12:40:08
+ * @LastEditTime: 2021-03-10 15:47:46
  * @FilePath: \my-cli-ui\src\card\Card.vue
 -->
 <template>
@@ -25,7 +25,9 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from "vue";
+
+export default defineComponent({
   name: "Card",
   props: {
     size: {
@@ -41,7 +43,7 @@ export default {
     },
   },
   setup() {},
-};
+});
 </script>
 <style lang="less" scoped>
 .ts-card {
@@ -103,22 +105,22 @@ export default {
     padding: 14px 24px;
   }
   &.small-card {
-      .ts-card-header {
-          min-height: 36px;
-          padding: 0 12px;
-          .ts-card-header-title {
-              padding: 8px 0;
-          }
-           .ts-card-header-extra {
-              padding: 8px 0;
-          }
+    .ts-card-header {
+      min-height: 36px;
+      padding: 0 12px;
+      .ts-card-header-title {
+        padding: 8px 0;
       }
-      .ts-card-body {
-          padding: 0 12px;
+      .ts-card-header-extra {
+        padding: 8px 0;
       }
-      .ts-card-footer {
-          padding: 4px 12px;
-      }
+    }
+    .ts-card-body {
+      padding: 0 12px;
+    }
+    .ts-card-footer {
+      padding: 4px 12px;
+    }
   }
 }
 </style>

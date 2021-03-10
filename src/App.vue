@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 15:43:02
+ * @LastEditTime: 2021-03-10 18:14:20
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -139,6 +139,24 @@
     <ts-alert message="提示信息" icon="search" type="warning" />
     <ts-alert message="提示信息" icon="error" type="error" />
   </div>
+  <div :style="{
+      width: '300px',
+      margin: '60px',
+      padding: '20px',
+      border: '1px solid black',
+    }">
+      <ts-popover>
+        <template #title>
+          气泡头
+        </template>
+        <template #body>
+          <p>content..........</p>
+          <p>content..........</p>
+          <p>content..........</p>
+        </template>
+        <ts-button>气泡卡片</ts-button>
+      </ts-popover>
+  </div>
 </template>
 
 <script>
@@ -152,6 +170,7 @@ import TsMenuItem from "./MenuItem";
 import TsModal from "./modal/Modal";
 import TsCard from "./card/Card";
 import TsAlert from "./alert/Alert";
+import TsPopover from './popover/Popover'
 export default {
   name: "App",
   components: {
@@ -164,6 +183,7 @@ export default {
     TsModal,
     TsCard,
     TsAlert,
+    TsPopover
   },
 
   setup() {
