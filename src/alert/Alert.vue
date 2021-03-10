@@ -1,25 +1,29 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 12:48:51
- * @LastEditTime: 2021-03-10 13:34:09
+ * @LastEditTime: 2021-03-10 14:03:17
  * @FilePath: \my-cli-ui\src\alert\Alert.vue
 -->
 <template>
-  <div
-    class="ts-alert"
-    :class="{ [`ts-alert-${type}`]: type, 'alert-font': description }"
-  >
-    <div class="alert-header">
-      <div class="content">
-        <ts-icon v-if="icon" :name="icon" class="ts-alert-title-icon" />
-        {{ message }}
+  <transition name="alert">
+    <div
+      v-if="isShow"
+      class="ts-alert"
+      :class="{ [`ts-alert-${type}`]: type, 'alert-font': description }"
+    >
+      <div class="alert-header">
+        <div class="content">
+          <ts-icon v-if="icon" :name="icon" class="ts-alert-title-icon" />
+          {{ message }}
+        </div>
+        <ts-icon name="delete" class="close-icon" @click="handleDelete" />
       </div>
-      <ts-icon name="delete" class="close-icon" />
+      <div v-if="description" class="alert-description">{{ description }}</div>
     </div>
-    <div v-if="description" class="alert-description">{{ description }}</div>
-  </div>
+  </transition>
 </template>
 <script>
+import { ref } from "vue";
 import TsIcon from "../Icon";
 export default {
   name: "Alert",
@@ -37,10 +41,21 @@ export default {
     },
     description: String,
   },
+  setup() {
+    let isShow = ref(true);
+    const handleDelete = () => {
+      isShow.value = false;
+    };
+    return {
+      handleDelete,
+      isShow,
+    };
+  },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less" >
 .ts-alert {
+  transition: all 0.3s;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -103,6 +118,29 @@ export default {
   .close-icon {
     cursor: pointer;
     font-size: 10px;
+  }
+}
+.alert-enter-active,
+.alert-leave-active {
+  animation: closing 0.3s linear;
+
+  // height: 30px;
+  transform-origin: 50% 0;
+  transition: all 0.3s ease;
+}
+.alert-enter-from,
+.alert-leave-to {
+  //   height: 0;
+  opacity: 0;
+  // width: 0;
+  // background-color: rgb(255, 255, 255);
+}
+@keyframes closing {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-50px);
   }
 }
 </style>
