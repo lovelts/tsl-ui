@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-06 13:14:04
- * @LastEditTime: 2021-03-09 11:34:22
+ * @LastEditTime: 2021-03-10 08:44:13
  * @FilePath: \my-cli-ui\src\Button.vue
 -->
 <template>
@@ -57,7 +57,7 @@ export default defineComponent({
   height: var(--button-height);
   background: var(--button-bg);
   border: 1px solid var(--border-color);
-  padding: 0 0.8em;
+  padding: 0 1em;
   font-size: var(--font-size);
   border-radius: var(--border-radius);
   &:hover {
@@ -124,7 +124,6 @@ export default defineComponent({
       outline: none;
     }
   }
-
   .loading {
     animation: spin .8s infinite linear;
   }

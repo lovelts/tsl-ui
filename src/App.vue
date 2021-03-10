@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-09 22:06:15
+ * @LastEditTime: 2021-03-10 10:53:48
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -71,13 +71,33 @@
       <ts-divider type="vertical" dashed />
     </div>
   </div>
-  <div :style="{ width: '600px', height: '400px' ,border:'1px solid black',margin:'60px' }">
+  <div
+    :style="{
+      width: '600px',
+      height: '400px',
+      border: '1px solid black',
+      margin: '60px',
+    }"
+  >
     <ts-menu defaultSelect="4">
       <ts-menu-item icon="setting" myKey="4">侧边栏一</ts-menu-item>
       <ts-menu-item icon="dianzan" myKey="5">侧边栏二</ts-menu-item>
       <ts-menu-item icon="download" myKey="6">侧边栏三</ts-menu-item>
     </ts-menu>
     <!-- 1111 -->
+  </div>
+  <div>
+    <ts-button @click="changeVisible">点击打开modal</ts-button>
+    <ts-modal
+     :visible="visible" 
+     :onOk="onOk" 
+     :onCancel="onCancel"
+     okText="ok"
+     cancelText="cancel"
+    >
+      <template #header> header </template>
+      1231322
+    </ts-modal>
   </div>
 </template>
 
@@ -88,7 +108,8 @@ import TsButtonGroup from "./ButtonGroup";
 import TsInput from "./Input";
 import TsDivider from "./Divider";
 import TsMenu from "./Menu";
-import TsMenuItem from './MenuItem'
+import TsMenuItem from "./MenuItem";
+import TsModal from "./modal/Modal";
 export default {
   name: "App",
   components: {
@@ -97,11 +118,13 @@ export default {
     TsInput,
     TsDivider,
     TsMenu,
-    TsMenuItem
+    TsMenuItem,
+    TsModal,
   },
 
   setup() {
     let msg = ref("");
+    let visible = ref(false);
     const loading = ref(false);
     const loading2 = ref(false);
     function handleClick() {
@@ -117,6 +140,15 @@ export default {
     function changeModel() {
       msg.value += 1;
     }
+    const changeVisible = () => {
+      visible.value = true;
+    };
+    const onOk = () => {
+      visible.value = false;
+    };
+    const onCancel = () => {
+      visible.value = false;
+    };
     return {
       changeModel,
       loading,
@@ -125,6 +157,10 @@ export default {
       handleClick2,
       handleChange,
       msg,
+      visible,
+      changeVisible,
+      onOk,
+      onCancel,
     };
   },
 };
@@ -149,13 +185,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   margin-top: 60px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 :root {
   --button-height: 32px;
   --font-size: 14px;
   --button-bg: white;
   --button-active-bg: #eee;
-  --border-radius: 4px;
+  --border-radius: 3px;
   --color: #999;
   --border-color: #999;
   --border-color-hover: #666;
