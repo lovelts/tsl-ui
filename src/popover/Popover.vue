@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 15:46:48
- * @LastEditTime: 2021-03-10 18:13:22
+ * @LastEditTime: 2021-03-10 20:41:06
  * @FilePath: \my-cli-ui\src\popover\Popover.vue
 -->
 <template>
@@ -21,13 +21,11 @@ import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
   name: "Popover",
-  setup(props, ctx) {
+  setup() {
     let isShow = ref(false);
     let slotRef = ref(null);
     let popoverRef = ref(null);
-    console.log(ctx);
     onMounted(() => {
-      console.log(slotRef.value, popoverRef.value);
       popoverRef.value.style.top =
         slotRef.value.offsetTop - popoverRef.value.offsetHeight - 18 + "px";
       popoverRef.value.style.left =
@@ -55,9 +53,9 @@ export default defineComponent({
   &.is-show {
     opacity: 1;
     z-index: 999;
-    transform: rotate(0deg);
+    transform: rotate(0deg) scale(1,1);
   }
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(0,0);
 
   box-shadow: 0 0 8px rgb(206, 206, 206);
   transition: all 0.3s;

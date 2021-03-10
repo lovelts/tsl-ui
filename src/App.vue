@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 18:14:20
+ * @LastEditTime: 2021-03-10 18:41:55
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -157,6 +157,15 @@
         <ts-button>气泡卡片</ts-button>
       </ts-popover>
   </div>
+  <div :style="{
+      width: '800px',
+      height:'300px',
+      margin: '60px',
+      padding: '20px',
+      border: '1px solid black',
+    }">
+      <ts-tabs></ts-tabs>
+    </div>
 </template>
 
 <script>
@@ -171,6 +180,7 @@ import TsModal from "./modal/Modal";
 import TsCard from "./card/Card";
 import TsAlert from "./alert/Alert";
 import TsPopover from './popover/Popover'
+import TsTabs from './tabs/Tabs'
 export default {
   name: "App",
   components: {
@@ -183,7 +193,8 @@ export default {
     TsModal,
     TsCard,
     TsAlert,
-    TsPopover
+    TsPopover,
+    TsTabs
   },
 
   setup() {

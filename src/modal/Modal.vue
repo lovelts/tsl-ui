@@ -1,26 +1,31 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-09 22:21:58
- * @LastEditTime: 2021-03-10 10:53:21
+ * @LastEditTime: 2021-03-10 21:03:45
  * @FilePath: \my-cli-ui\src\modal\Modal.vue
 -->
 <template>
+  <transition name="mask">
+    <div v-show="visible" class="ts-modal-box"></div>
+  </transition>
   <transition name="modal">
     <div v-show="visible" class="ts-modal">
-      <transition name="a">
-        <div class="ts-modal-content">
-          <div class="ts-modal-header">
-            <slot name="header" />
-          </div>
-          <div class="ts-modal-body">
-            <slot />
-          </div>
-          <div class="ts-modal-footer">
-            <ts-button v-if="onCancel" class="cancel" @click="onCancel">{{cancelText}}</ts-button>
-            <ts-button v-if="onOk" type="primary" class="ok" @click="onOk">{{okText}}</ts-button>
-          </div>
+      <div class="ts-modal-content">
+        <div class="ts-modal-header">
+          <slot name="header" />
         </div>
-      </transition>
+        <div class="ts-modal-body">
+          <slot />
+        </div>
+        <div class="ts-modal-footer">
+          <ts-button v-if="onCancel" class="cancel" @click="onCancel">{{
+            cancelText
+          }}</ts-button>
+          <ts-button v-if="onOk" type="primary" class="ok" @click="onOk">{{
+            okText
+          }}</ts-button>
+        </div>
+      </div>
     </div>
   </transition>
 </template>
@@ -56,13 +61,22 @@ export default defineComponent({
 });
 </script>
 <style lang="less" scoped>
-.ts-modal {
+.ts-modal-box {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+.ts-modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  // background-color: rgba(0, 0, 0, 0.45);
   z-index: 1000;
   height: 100%;
   // transition: all 0.3s ease;
@@ -117,16 +131,18 @@ export default defineComponent({
 
 .modal-enter-from,
 .modal-leave-to {
+  transform: scale(0.4, 0.4);
   opacity: 0;
 }
-.a-enter-active,
-.a-leave-active {
+.mask-enter-active,
+.mask-leave-active {
+   
   transition: all 0.3s ease;
 }
-.a-enter-from,
-.a-leave-to {
+
+.mask-enter-from,
+.mask-leave-to {
+ 
   opacity: 0;
-  // width: 0;
-  // background-color: rgb(255, 255, 255);
 }
 </style>
