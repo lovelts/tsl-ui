@@ -1,11 +1,11 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 12:48:51
- * @LastEditTime: 2021-03-10 14:03:17
+ * @LastEditTime: 2021-03-10 15:38:46
  * @FilePath: \my-cli-ui\src\alert\Alert.vue
 -->
 <template>
-  <transition name="alert">
+  <transition-group name="alert">
     <div
       v-if="isShow"
       class="ts-alert"
@@ -20,7 +20,7 @@
       </div>
       <div v-if="description" class="alert-description">{{ description }}</div>
     </div>
-  </transition>
+  </transition-group>
 </template>
 <script>
 import { ref } from "vue";
@@ -55,6 +55,9 @@ export default {
 </script>
 <style lang="less" >
 .ts-alert {
+  min-height: 0;
+  position: relative;
+  z-index: 10;
   transition: all 0.3s;
   text-align: left;
   display: flex;
@@ -122,25 +125,15 @@ export default {
 }
 .alert-enter-active,
 .alert-leave-active {
-  animation: closing 0.3s linear;
-
-  // height: 30px;
-  transform-origin: 50% 0;
-  transition: all 0.3s ease;
+  transition: all .3s ease;
 }
+
 .alert-enter-from,
 .alert-leave-to {
-  //   height: 0;
+  height: 0;
   opacity: 0;
-  // width: 0;
-  // background-color: rgb(255, 255, 255);
-}
-@keyframes closing {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-50px);
-  }
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 </style>

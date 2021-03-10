@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 13:32:50
+ * @LastEditTime: 2021-03-10 15:43:02
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -127,9 +127,16 @@
       <p>content...................</p>
     </ts-card>
   </div>
-  <div :style="{ width: '300px', margin: '60px', padding: '20px' }">
-    <ts-alert message="提示信息" description="lalallalalla" icon="setting"/>
-    <ts-alert message="提示信息" icon="search" type="warning"/>
+  <div
+    :style="{
+      width: '300px',
+      margin: '60px',
+      padding: '20px',
+      border: '1px solid black',
+    }"
+  >
+    <ts-alert message="提示信息" description="lalallalalla" icon="setting" />
+    <ts-alert message="提示信息" icon="search" type="warning" />
     <ts-alert message="提示信息" icon="error" type="error" />
   </div>
 </template>
