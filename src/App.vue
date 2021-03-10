@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 12:44:14
+ * @LastEditTime: 2021-03-10 13:32:50
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -127,6 +127,11 @@
       <p>content...................</p>
     </ts-card>
   </div>
+  <div :style="{ width: '300px', margin: '60px', padding: '20px' }">
+    <ts-alert message="提示信息" description="lalallalalla" icon="setting"/>
+    <ts-alert message="提示信息" icon="search" type="warning"/>
+    <ts-alert message="提示信息" icon="error" type="error" />
+  </div>
 </template>
 
 <script>
@@ -139,6 +144,7 @@ import TsMenu from "./Menu";
 import TsMenuItem from "./MenuItem";
 import TsModal from "./modal/Modal";
 import TsCard from "./card/Card";
+import TsAlert from "./alert/Alert";
 export default {
   name: "App",
   components: {
@@ -150,6 +156,7 @@ export default {
     TsMenuItem,
     TsModal,
     TsCard,
+    TsAlert,
   },
 
   setup() {
