@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 10:53:48
+ * @LastEditTime: 2021-03-10 12:40:43
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -89,15 +89,43 @@
   <div>
     <ts-button @click="changeVisible">点击打开modal</ts-button>
     <ts-modal
-     :visible="visible" 
-     :onOk="onOk" 
-     :onCancel="onCancel"
-     okText="ok"
-     cancelText="cancel"
+      :visible="visible"
+      :onOk="onOk"
+      :onCancel="onCancel"
+      okText="ok"
+      cancelText="cancel"
     >
       <template #header> header </template>
-      1231322
+      <p>content...................</p>
+      <p>content...................</p>
+      <p>content...................</p>
     </ts-modal>
+  </div>
+  <div
+    :style="{
+      width: '1000px',
+      height: '400px',
+      border: '1px solid black',
+      margin: '60px',
+      padding: '20px',
+      display: 'flex',
+    }"
+  >
+    <ts-card>
+      <template #title> header </template>
+      <template #extra> more </template>
+      <p>content...................</p>
+      <p>content...................</p>
+      <p>content...................</p>
+    </ts-card>
+    <ts-card size="small" :style="{ marginLeft: '10px' }" footer>
+      <template #title> header </template>
+      <template #extra> more </template>
+      <template #footer> footer </template>
+      <p>content...................</p>
+      <p>content...................</p>
+      <p>content...................</p>
+    </ts-card>
   </div>
 </template>
 
@@ -110,6 +138,7 @@ import TsDivider from "./Divider";
 import TsMenu from "./Menu";
 import TsMenuItem from "./MenuItem";
 import TsModal from "./modal/Modal";
+import TsCard from "./card/Card";
 export default {
   name: "App",
   components: {
@@ -120,6 +149,7 @@ export default {
     TsMenu,
     TsMenuItem,
     TsModal,
+    TsCard,
   },
 
   setup() {
