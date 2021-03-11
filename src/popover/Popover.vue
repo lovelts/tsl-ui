@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 15:46:48
- * @LastEditTime: 2021-03-10 20:41:06
+ * @LastEditTime: 2021-03-11 13:49:59
  * @FilePath: \my-cli-ui\src\popover\Popover.vue
 -->
 <template>
@@ -10,7 +10,7 @@
       <slot name="title" />
     </div>
     <div class="popover-body">
-      <slot name="body"/>
+      <slot name="body" />
     </div>
     <div class="shanjiao"></div>
   </div>
@@ -25,6 +25,7 @@ export default defineComponent({
     let isShow = ref(false);
     let slotRef = ref(null);
     let popoverRef = ref(null);
+
     onMounted(() => {
       popoverRef.value.style.top =
         slotRef.value.offsetTop - popoverRef.value.offsetHeight - 18 + "px";
@@ -53,9 +54,9 @@ export default defineComponent({
   &.is-show {
     opacity: 1;
     z-index: 999;
-    transform: rotate(0deg) scale(1,1);
+    transform: rotate(0deg) scale(1, 1);
   }
-  transform: rotate(90deg) scale(0,0);
+  transform: rotate(90deg) scale(0, 0);
 
   box-shadow: 0 0 8px rgb(206, 206, 206);
   transition: all 0.3s;

@@ -1,76 +1,60 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 18:20:03
- * @LastEditTime: 2021-03-10 20:39:09
+ * @LastEditTime: 2021-03-11 16:55:30
  * @FilePath: \my-cli-ui\src\tabs\Tabs.vue
 -->
 <template>
   <div class="ts-tabs">
     <div class="ts-tabs-header">
       <div
+        v-for="item in keysAndTabs"
+        :key="item.key"
         class="ts-tabs-pane"
-        key="1"
-        :class="{ active: activeKey === '1' }"
-        @click="handleClick('1')"
+        :class="{ active: activeKey === item.key }"
+        @click="handleClick(item.key)"
       >
-        tab1
-      </div>
-      <div
-        class="ts-tabs-pane"
-        key="2"
-        :class="{ active: activeKey === '2' }"
-        @click="handleClick('2')"
-      >
-        tab2
-      </div>
-      <div
-        class="ts-tabs-pane"
-        key="3"
-        :class="{ active: activeKey === '3' }"
-        @click="handleClick('3')"
-      >
-        tab3
+        {{ item.tab }}
       </div>
     </div>
     <div class="ts-tabs-body">
       <div
+        v-for="item in keysAndTabs"
+        :key="item.key"
         class="ts-tabs-pane-content"
-        :class="{ 'active-content': activeKey === '1' }"
-        key="1"
-      >
-        content1
-      </div>
-      <div
-        class="ts-tabs-pane-content"
-        :class="{ 'active-content': activeKey === '2' }"
-        key="2"
-      >
-        content2
-      </div>
-      <div
-        class="ts-tabs-pane-content"
-        :class="{ 'active-content': activeKey === '3' }"
-        key="3"
-      >
-        content3
-      </div>
+        :class="{ 'active-content': activeKey === item.key }"
+      ></div>
     </div>
+    <div ref="tempRef" style="display: none"><slot /></div>
   </div>
 </template>
 <script>
-import { defineComponent, ref } from "vue";
+import { defineComponent, onMounted, ref, provide } from "vue";
 
 export default defineComponent({
   name: "Tabs",
   setup() {
-    let activeKey = ref("1");
+    let keysAndTabs = ref([]);
+    const pushKeysAndTabs = (obj) => {
+      keysAndTabs.value = [...keysAndTabs.value, obj];
+    };
+    provide("pushKeysAndTabs", pushKeysAndTabs);
+    let tempRef = ref();
+    let activeKey = ref();
+    onMounted(() => {
+
+
+      keysAndTabs.value[0] && (activeKey.value = keysAndTabs.value[0].key);
+    });
     const handleClick = (key) => {
-      console.log(key);
+      // console.log(key);
       activeKey.value = key;
     };
     return {
       handleClick,
       activeKey,
+      tempRef,
+      keysAndTabs,
     };
   },
 });
@@ -144,10 +128,11 @@ export default defineComponent({
       opacity: 0;
       flex-shrink: 0;
       width: 0;
-      opacity: 1;
-      transition: opacity 0.45s;
+      opacity: 0;
+      transition: all 0.45s;
       pointer-events: none;
       &.active-content {
+        opacity: 1;
         width: 100%;
         height: auto;
       }

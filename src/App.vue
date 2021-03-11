@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-10 18:41:55
+ * @LastEditTime: 2021-03-11 16:01:35
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -139,33 +139,54 @@
     <ts-alert message="提示信息" icon="search" type="warning" />
     <ts-alert message="提示信息" icon="error" type="error" />
   </div>
-  <div :style="{
+  <div
+    :style="{
       width: '300px',
       margin: '60px',
       padding: '20px',
       border: '1px solid black',
-    }">
-      <ts-popover>
-        <template #title>
-          气泡头
-        </template>
-        <template #body>
-          <p>content..........</p>
-          <p>content..........</p>
-          <p>content..........</p>
-        </template>
-        <ts-button>气泡卡片</ts-button>
-      </ts-popover>
+    }"
+  >
+    <ts-popover>
+      <template #title> 气泡头 </template>
+      <template #body>
+        <p>content..........</p>
+        <p>content..........</p>
+        <p>content..........</p>
+      </template>
+      <ts-button>气泡卡片</ts-button>
+    </ts-popover>
   </div>
-  <div :style="{
+  <div
+    :style="{
       width: '800px',
-      height:'300px',
+      height: '300px',
       margin: '60px',
       padding: '20px',
       border: '1px solid black',
-    }">
-      <ts-tabs></ts-tabs>
-    </div>
+    }"
+  >
+    <ts-tabs>
+      <ts-tab-pane myKey="6" tab="tab6">
+        <p>content6</p>
+      </ts-tab-pane>
+      <ts-tab-pane myKey="7" tab="tab7">
+        <p>content7</p>
+      </ts-tab-pane>
+    </ts-tabs>
+    <!-- <ts-tab-pane tab="tab4">content4</ts-tab-pane> -->
+  </div>
+  <div
+    :style="{
+      width: '800px',
+      height: '300px',
+      margin: '60px',
+      padding: '20px',
+      border: '1px solid black',
+    }"
+  >
+    <ts-swiper></ts-swiper>
+  </div>
 </template>
 
 <script>
@@ -179,8 +200,10 @@ import TsMenuItem from "./MenuItem";
 import TsModal from "./modal/Modal";
 import TsCard from "./card/Card";
 import TsAlert from "./alert/Alert";
-import TsPopover from './popover/Popover'
-import TsTabs from './tabs/Tabs'
+import TsPopover from "./popover/Popover";
+import TsTabs from "./tabs/Tabs";
+import TsTabPane from "./tabs/TabPane";
+import TsSwiper from "./swiper/Swiper.jsx";
 export default {
   name: "App",
   components: {
@@ -194,7 +217,9 @@ export default {
     TsCard,
     TsAlert,
     TsPopover,
-    TsTabs
+    TsTabs,
+    TsTabPane,
+    TsSwiper,
   },
 
   setup() {
