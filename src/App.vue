@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-11 16:01:35
+ * @LastEditTime: 2021-03-11 21:04:10
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -185,7 +185,12 @@
       border: '1px solid black',
     }"
   >
-    <ts-swiper></ts-swiper>
+    <ts-swiper>
+      <ts-swiper-slide>123</ts-swiper-slide>
+      <ts-swiper-slide>456</ts-swiper-slide>
+      <ts-swiper-slide>789</ts-swiper-slide>
+      
+    </ts-swiper>
   </div>
 </template>
 
@@ -204,6 +209,7 @@ import TsPopover from "./popover/Popover";
 import TsTabs from "./tabs/Tabs";
 import TsTabPane from "./tabs/TabPane";
 import TsSwiper from "./swiper/Swiper.jsx";
+import TsSwiperSlide from './swiper/SwiperSlide.jsx'
 export default {
   name: "App",
   components: {
@@ -220,6 +226,7 @@ export default {
     TsTabs,
     TsTabPane,
     TsSwiper,
+    TsSwiperSlide
   },
 
   setup() {

@@ -1,45 +1,64 @@
-import { defineComponent, onMounted, ref } from 'vue'
+import { defineComponent, onMounted, ref, provide } from 'vue'
 import './swiper.less'
-const Demo = defineComponent({
-  name: 'demo',
-  setup() {
+const Swiper = defineComponent({
+  name: 'Swiper',
+
+  // eslint-disable-next-line no-unused-vars
+  setup(props, { slots }) {
     let swiperRef = ref()
-    let num = ref(3)
-    console.log(num.value);
-    let arr = [1, 2, 3]
+    let arr = ref([])
     let translateX = ref(0)
-    let activeKey = ref(1)
+    let activeKey = ref(0)
+    let autoplayTime = ref(3000)
     let temp = ref(0)
+    const pushArr = () => {
+      arr.value = [...arr.value, '']
+    }
+    provide('pushArr', pushArr)
+    // eslint-disable-next-line no-unused-vars
+    let timeInterval = null
+    // eslint-disable-next-line no-unused-vars
+    let intervalCount = 0
+
+    provide('translateX', translateX.value)
     onMounted(() => {
       temp.value -= swiperRef.value.offsetWidth
-      console.log(swiperRef.value.offsetWidth, temp.value);
+      autoplay()
     })
     const getCurrent = (e) => {
-      console.log(e);
+      clearInterval(timeInterval)
+      intervalCount = e
       activeKey.value = e
-      translateX.value = (e - 1) * temp.value
-      console.log(translateX.value);
+      translateX.value = e * temp.value
+      autoplay()
+    }
+    const autoplay = () => {
+      timeInterval = setInterval(() => {
+        intervalCount++
+        intervalCount %= arr.value.length
+        activeKey.value = intervalCount
+        translateX.value = temp.value * intervalCount
+      }, autoplayTime.value);
     }
     return () => (
       <>
         <div className="ts-swiper" ref={swiperRef}>
-          <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>1</div>
+          {slots.default()}
+          {/* <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>1</div>
           <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>2</div>
-          <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>3</div>
+          <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>3</div> */}
           <ul>
             {
-              arr.map((item) => {
+              arr.value.map((item, index) => {
                 return (
                   <li
-                    className={activeKey.value === item ? 'active' : ''}
-                    key={item}
-                    onClick={() => getCurrent(item)}></li>
+                    className={activeKey.value === index ? 'active' : ''}
+                    key={index}
+                    onClick={() => getCurrent(index)}></li>
                 )
               })
             }
-            {/* <li className={'active'} key={1} onClick={() => getCurrent(1)}></li>
-            <li key={2} onClick={() => getCurrent(2)}></li>
-            <li key={3} onClick={() => getCurrent(3)}></li> */}
+
           </ul>
         </div>
       </>
@@ -49,4 +68,4 @@ const Demo = defineComponent({
 
 })
 
-export default Demo
+export default Swiper
