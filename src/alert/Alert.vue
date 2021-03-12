@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 12:48:51
- * @LastEditTime: 2021-03-10 15:47:34
+ * @LastEditTime: 2021-03-12 10:22:51
  * @FilePath: \my-cli-ui\src\alert\Alert.vue
 -->
 <template>
@@ -24,7 +24,7 @@
 </template>
 <script>
 import { defineComponent, ref } from "vue";
-import TsIcon from "../Icon";
+import TsIcon from "../icon/Icon";
 export default defineComponent({
   name: "Alert",
   components: {

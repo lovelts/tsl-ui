@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-09 22:21:58
- * @LastEditTime: 2021-03-10 21:03:45
+ * @LastEditTime: 2021-03-12 10:24:04
  * @FilePath: \my-cli-ui\src\modal\Modal.vue
 -->
 <template>
@@ -31,7 +31,7 @@
 </template>
 <script>
 import { defineComponent } from "vue";
-import TsButton from "../Button";
+import TsButton from "../button/Button";
 export default defineComponent({
   name: "Modal",
   props: {

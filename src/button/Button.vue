@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-06 13:14:04
- * @LastEditTime: 2021-03-10 08:44:13
- * @FilePath: \my-cli-ui\src\Button.vue
+ * @LastEditTime: 2021-03-12 10:18:58
+ * @FilePath: \my-cli-ui\src\button\Button.vue
 -->
 <template>
   <button
@@ -20,7 +20,7 @@
   </button>
 </template>
 <script>
-import Icon from "./Icon.vue";
+import Icon from "../icon/Icon.vue";
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "Button",

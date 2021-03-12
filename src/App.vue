@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-12 10:09:44
+ * @LastEditTime: 2021-03-12 10:25:07
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -204,12 +204,12 @@
 
 <script>
 import { ref } from "vue";
-import TsButton from "./Button.vue";
-import TsButtonGroup from "./ButtonGroup";
-import TsInput from "./Input";
-import TsDivider from "./Divider";
-import TsMenu from "./Menu";
-import TsMenuItem from "./MenuItem";
+import TsButton from "./button/Button.vue";
+import TsButtonGroup from "./button-group/ButtonGroup";
+import TsInput from "./input/Input";
+import TsDivider from "./divider/Divider";
+import TsMenu from "./menu/Menu";
+import TsMenuItem from "./menu/MenuItem";
 import TsModal from "./modal/Modal";
 import TsCard from "./card/Card";
 import TsAlert from "./alert/Alert";

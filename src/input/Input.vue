@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-09 11:37:47
- * @FilePath: \my-cli-ui\src\Input.vue
+ * @LastEditTime: 2021-03-12 10:20:46
+ * @FilePath: \my-cli-ui\src\input\Input.vue
 -->
 <template>
   <div
@@ -40,8 +40,8 @@
   </div>
 </template>
 <script>
-import TsIcon from "./Icon";
-import TsButton from "./Button";
+import TsIcon from "../icon/Icon";
+import TsButton from "../button/Button";
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "Input",
