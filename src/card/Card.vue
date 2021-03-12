@@ -28,7 +28,7 @@
 import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: "Card",
+  name: "TsCard",
   props: {
     size: {
       type: String,

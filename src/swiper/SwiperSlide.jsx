@@ -1,7 +1,7 @@
 import { defineComponent, inject } from 'vue'
 import './swiper.less'
 
-const SwiperSlide = defineComponent({
+const TsSwiperSlide = defineComponent({
     name: 'SwiperSlide',
     setup(props, { slots }) {
         inject('pushArr')()
@@ -12,4 +12,4 @@ const SwiperSlide = defineComponent({
     }
 })
 
-export default SwiperSlide
+export default TsSwiperSlide

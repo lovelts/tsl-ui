@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 13:53:51
- * @LastEditTime: 2021-03-12 10:20:46
+ * @LastEditTime: 2021-03-12 10:43:46
  * @FilePath: \my-cli-ui\src\input\Input.vue
 -->
 <template>
@@ -44,7 +44,7 @@ import TsIcon from "../icon/Icon";
 import TsButton from "../button/Button";
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Input",
+  name: "TsInput",
   components: {
     TsIcon,
     TsButton,

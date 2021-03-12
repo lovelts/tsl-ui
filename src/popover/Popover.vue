@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 15:46:48
- * @LastEditTime: 2021-03-11 13:49:59
+ * @LastEditTime: 2021-03-12 10:44:06
  * @FilePath: \my-cli-ui\src\popover\Popover.vue
 -->
 <template>
@@ -20,7 +20,7 @@
 import { defineComponent, onMounted, ref } from "vue";
 
 export default defineComponent({
-  name: "Popover",
+  name: "TsPopover",
   setup() {
     let isShow = ref(false);
     let slotRef = ref(null);

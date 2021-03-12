@@ -1,6 +1,6 @@
 import { defineComponent, onMounted, ref, provide } from 'vue'
 import './swiper.less'
-const Swiper = defineComponent({
+const TsSwiper = defineComponent({
   name: 'Swiper',
   props:{
     autoplay:{
@@ -73,4 +73,4 @@ const Swiper = defineComponent({
 
 })
 
-export default Swiper
+export default TsSwiper

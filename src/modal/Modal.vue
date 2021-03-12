@@ -33,7 +33,7 @@
 import { defineComponent } from "vue";
 import TsButton from "../button/Button";
 export default defineComponent({
-  name: "Modal",
+  name: "TsModal",
   props: {
     visible: {
       type: Boolean,

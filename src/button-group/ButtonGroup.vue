@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-07 12:47:05
- * @LastEditTime: 2021-03-08 12:58:09
- * @FilePath: \my-cli-ui\src\ButtonGroup.vue
+ * @LastEditTime: 2021-03-12 10:43:28
+ * @FilePath: \my-cli-ui\src\button-group\ButtonGroup.vue
 -->
 <template>
   <div class="ts-button-group" ref="myDiv">
@@ -12,7 +12,7 @@
 <script>
 import { onMounted, ref,defineComponent } from "vue";
 export default defineComponent ({
-  name: "ButtonGroup",
+  name: "TsButtonGroup",
   setup() {
     const myDiv = ref();
     onMounted(() => {

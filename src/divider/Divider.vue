@@ -1,8 +1,8 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-09 11:40:27
- * @LastEditTime: 2021-03-09 13:30:30
- * @FilePath: \my-cli-ui\src\Divider.vue
+ * @LastEditTime: 2021-03-12 10:43:36
+ * @FilePath: \my-cli-ui\src\divider\Divider.vue
 -->
 <template>
   <div
@@ -26,7 +26,7 @@
 <script>
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Divider",
+  name: "TsDivider",
   props: {
     posi: {
       type: String,

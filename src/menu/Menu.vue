@@ -12,7 +12,7 @@
 <script>
 import { defineComponent, provide, ref } from "vue";
 export default defineComponent({
-  name: "Menu",
+  name: "TsMenu",
   props: {
     defaultSelect: String,
     style:Object

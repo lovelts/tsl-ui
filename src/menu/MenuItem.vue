@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-09 15:16:35
- * @LastEditTime: 2021-03-12 10:17:29
+ * @LastEditTime: 2021-03-12 10:43:57
  * @FilePath: \my-cli-ui\src\menu\MenuItem.vue
 -->
 <template lang="">
@@ -20,7 +20,7 @@
 import { defineComponent, inject, ref } from "vue";
 import TsIcon from "../icon/Icon";
 export default defineComponent({
-  name: "MenuItem",
+  name: "TsMenuItem",
   components: {
     TsIcon,
   },

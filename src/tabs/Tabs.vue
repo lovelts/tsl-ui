@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-10 18:20:03
- * @LastEditTime: 2021-03-11 16:55:30
+ * @LastEditTime: 2021-03-12 10:44:31
  * @FilePath: \my-cli-ui\src\tabs\Tabs.vue
 -->
 <template>
@@ -32,7 +32,7 @@
 import { defineComponent, onMounted, ref, provide } from "vue";
 
 export default defineComponent({
-  name: "Tabs",
+  name: "TsTabs",
   setup() {
     let keysAndTabs = ref([]);
     const pushKeysAndTabs = (obj) => {

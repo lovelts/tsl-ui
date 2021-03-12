@@ -23,7 +23,7 @@
 import Icon from "../icon/Icon.vue";
 import { defineComponent } from "vue";
 export default defineComponent({
-  name: "Button",
+  name: "TsButton",
   components: {
     "ts-icon": Icon,
   },

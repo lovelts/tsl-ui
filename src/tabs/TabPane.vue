@@ -13,7 +13,7 @@
 import { defineComponent, inject, onMounted, ref,createVNode } from "vue";
 
 export default defineComponent({
-  name: "TabPane",
+  name: "TsTabPane",
   props: {
     tab: String,
     myKey: String,
