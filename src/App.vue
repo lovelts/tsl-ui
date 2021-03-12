@@ -1,7 +1,7 @@
 <!--
  * @Author: lts
  * @Date: 2021-03-08 12:54:13
- * @LastEditTime: 2021-03-11 21:04:10
+ * @LastEditTime: 2021-03-12 10:09:44
  * @FilePath: \my-cli-ui\src\App.vue
 -->
 <template>
@@ -185,11 +185,19 @@
       border: '1px solid black',
     }"
   >
-    <ts-swiper>
-      <ts-swiper-slide>123</ts-swiper-slide>
-      <ts-swiper-slide>456</ts-swiper-slide>
-      <ts-swiper-slide>789</ts-swiper-slide>
-      
+    <ts-swiper 
+      autoplay
+      :autoplayTime="3000"
+    >
+      <ts-swiper-slide>
+        <div class="my-swiper-style" :style="{background:'#364d79'}">123</div>
+      </ts-swiper-slide>
+      <ts-swiper-slide>
+        <div class="my-swiper-style">456</div>
+      </ts-swiper-slide>
+      <ts-swiper-slide>
+        <div class="my-swiper-style" :style="{background:'#964d79'}">789</div>
+      </ts-swiper-slide>
     </ts-swiper>
   </div>
 </template>
@@ -209,7 +217,7 @@ import TsPopover from "./popover/Popover";
 import TsTabs from "./tabs/Tabs";
 import TsTabPane from "./tabs/TabPane";
 import TsSwiper from "./swiper/Swiper.jsx";
-import TsSwiperSlide from './swiper/SwiperSlide.jsx'
+import TsSwiperSlide from "./swiper/SwiperSlide.jsx";
 export default {
   name: "App",
   components: {
@@ -226,7 +234,7 @@ export default {
     TsTabs,
     TsTabPane,
     TsSwiper,
-    TsSwiperSlide
+    TsSwiperSlide,
   },
 
   setup() {
@@ -305,5 +313,13 @@ export default {
   --color: #999;
   --border-color: #999;
   --border-color-hover: #666;
+}
+.my-swiper-style {
+  color: #fff;
+  width: 100%;
+  color: "#fff";
+  line-height: 250px;
+  background: #664d79;
+  height: 100%;
 }
 </style>

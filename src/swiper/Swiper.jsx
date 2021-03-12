@@ -2,14 +2,20 @@ import { defineComponent, onMounted, ref, provide } from 'vue'
 import './swiper.less'
 const Swiper = defineComponent({
   name: 'Swiper',
-
+  props:{
+    autoplay:{
+      type:Boolean,
+      default:false
+    },
+    autoplayTime:Number
+  },
   // eslint-disable-next-line no-unused-vars
   setup(props, { slots }) {
     let swiperRef = ref()
     let arr = ref([])
     let translateX = ref(0)
     let activeKey = ref(0)
-    let autoplayTime = ref(3000)
+    let autoplayTime = ref(props.autoplayTime)
     let temp = ref(0)
     const pushArr = () => {
       arr.value = [...arr.value, '']
@@ -23,14 +29,14 @@ const Swiper = defineComponent({
     provide('translateX', translateX.value)
     onMounted(() => {
       temp.value -= swiperRef.value.offsetWidth
-      autoplay()
+      props.autoplay && autoplay()
     })
     const getCurrent = (e) => {
       clearInterval(timeInterval)
       intervalCount = e
       activeKey.value = e
       translateX.value = e * temp.value
-      autoplay()
+      props.autoplay && autoplay()
     }
     const autoplay = () => {
       timeInterval = setInterval(() => {
@@ -43,10 +49,9 @@ const Swiper = defineComponent({
     return () => (
       <>
         <div className="ts-swiper" ref={swiperRef}>
-          {slots.default()}
-          {/* <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>1</div>
-          <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>2</div>
-          <div className="ts-swiper-slide" style={{ transform: `translateX(${translateX.value}px)` }}>3</div> */}
+          <div className="swiper-total-box" style={{ width: '100%', transform: `translateX(${translateX.value}px)` }}>
+            {slots.default()}
+          </div>
           <ul>
             {
               arr.value.map((item, index) => {
